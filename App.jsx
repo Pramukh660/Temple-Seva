@@ -19,20 +19,20 @@ function App() {
 
     useEffect(() => {
         console.log('Current view:', view);
-        fetch('https://temple-seva-backend.onrender.com:3001/api/temples')
+        fetch('https://temple-seva-backend.onrender.com/api/temples')
             .then(res => res.json())
             .then(data => setTemples(data))
             .catch(err => setError('Failed to load temples'));
-        fetch('https://temple-seva-backend.onrender.com:3001/api/sevas')
+        fetch('https://temple-seva-backend.onrender.com/api/sevas')
             .then(res => res.json())
             .then(data => setSevas(data))
             .catch(err => setError('Failed to load sevas'));
         if (currentUser) {
-            fetch(`https://temple-seva-backend.onrender.com:3001/api/profiles/${currentUser.user_id}`)
+            fetch(`https://temple-seva-backend.onrender.com/api/profiles/${currentUser.user_id}`)
                 .then(res => res.json())
                 .then(data => setUserProfiles(data))
                 .catch(err => setError('Failed to load profiles'));
-            fetch(`https://temple-seva-backend.onrender.com:3001/api/orders/${currentUser.user_id}`)
+            fetch(`https://temple-seva-backend.onrender.com/api/orders/${currentUser.user_id}`)
                 .then(res => res.json())
                 .then(data => setOrders(data))
                 .catch(err => setError('Failed to load orders'));
@@ -45,7 +45,7 @@ function App() {
 
     const handleRegister = async (user) => {
         try {
-            const res = await fetch('https://temple-seva-backend.onrender.com:3001/api/register', {
+            const res = await fetch('https://temple-seva-backend.onrender.com/api/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(user)
@@ -65,7 +65,7 @@ function App() {
 
     const handleLogin = async (user) => {
         try {
-            const res = await fetch('https://temple-seva-backend.onrender.com:3001/api/login', {
+            const res = await fetch('https://temple-seva-backend.onrender.com/api/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(user)
@@ -87,7 +87,7 @@ function App() {
 
     const handleProfileSubmit = async (profile) => {
         try {
-            const res = await fetch('https://temple-seva-backend.onrender.com:3001/api/profiles', {
+            const res = await fetch('https://temple-seva-backend.onrender.com/api/profiles', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...profile, user_id: currentUser.user_id })
@@ -109,7 +109,7 @@ function App() {
 
     const handleOrderSubmit = async (order) => {
         try {
-            const res = await fetch('https://temple-seva-backend.onrender.com:3001/api/orders', {
+            const res = await fetch('https://temple-seva-backend.onrender.com/api/orders', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ ...order, user_id: currentUser.user_id })
@@ -130,7 +130,7 @@ function App() {
 
     const handleShippingSubmit = async (address, orderShipping) => {
         try {
-            const res = await fetch('https://temple-seva-backend.onrender.com:3001/api/shipping', {
+            const res = await fetch('https://temple-seva-backend.onrender.com/api/shipping', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ address, orderShipping })
